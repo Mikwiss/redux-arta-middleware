@@ -30,7 +30,7 @@ import defaults from './defaults';
  *
  * @returns {function} token middleware
  */
-function createTokenMiddleware(options = {}) {
+function createArtaMiddleware(options = {}) {
   const requestOptions = Object.assign({}, defaults, options);
 
   const {
@@ -285,4 +285,4 @@ function createTokenMiddleware(options = {}) {
   }
 }
 
-export { artaMiddleware };
+export { createArtaMiddleware };
