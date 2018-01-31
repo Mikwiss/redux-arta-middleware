@@ -1,9 +1,3 @@
-TODO !
-
-# create middelware
-# Symbol
-# next action
-# logger
 # redux-arta-middleware
 
 Redux middleware for an API REST server.
