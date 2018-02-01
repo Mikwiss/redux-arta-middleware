@@ -16,7 +16,7 @@ const client = axios.create();
 
 const onSuccess = function(response) {
   console.debug('Request Successful!', response);
-  // TODO : Why don't use Promise.resolve ? Because it's not a promise ? Or not...
+  // TODO : use Promise.resolve
   return response.data;
 }
 

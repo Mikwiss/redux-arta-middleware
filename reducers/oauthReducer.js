@@ -3,7 +3,7 @@
  * ---------------------
  *
  * @author  Mikwiss (@mikwiss)
- * @license ISC
+ * @license MIT
  *
  */
 
