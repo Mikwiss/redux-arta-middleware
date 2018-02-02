@@ -9,7 +9,11 @@ In order to use ARTA middleware
 
 ### Prerequisites
 
+It's obvious, but this package use [redux](https://redux.js.org/).
+
 redux-arta-middleware use [redux-thunk](https://github.com/gaearon/redux-thunk) in order to be able to use function instead of action.
+
+### Installation
 
 **Not on npm yet**
 
@@ -21,6 +25,19 @@ And if you're cool :
 
 ```
 yarn add redux-arta-middleware
+```
+
+### How to use it ?
+
+```javascript
+import { createStore, applyMiddleware } from 'redux';
+// Log all actions
+import { createLogger } from 'redux-logger'
+```
+
+```javascript
+import { createArtaMiddleware } from 'redux-arta-middleware';
+import { artaReducer } from 'redux-arta-middleware';
 ```
 
 ## Versioning
