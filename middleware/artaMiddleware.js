@@ -18,7 +18,9 @@ import { hasAuthToken,
   shouldRefreshToken,
   isAccessTokenValid } from './../core/token';
 
-import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR, IS_FETCHING, PARTIAL_END_IS_FETCHING, END_IS_FETCHING, REQUEST_API, CONNECT_API, DISCONNECT_API, REFRESH_TOKEN_API } from './../actions/auth';
+import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR, REQUEST_API, CONNECT_API, DISCONNECT_API, REFRESH_TOKEN_API } from './../actions/authActions';
+import { IS_FETCHING, PARTIAL_END_IS_FETCHING, END_IS_FETCHING } from './../actions/fetchActions';
+
 
 import defaults from './defaults';
 
