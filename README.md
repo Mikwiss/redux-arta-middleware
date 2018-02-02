@@ -9,7 +9,8 @@ In order to use ARTA middleware
 
 ### Prerequisites
 
-redux-arta-middleware use *redux-thunk* in order to be able to use function instead of action.
+redux-arta-middleware use [redux-thunk](https://github.com/gaearon/redux-thunk) in order to be able to use function instead of action.
+
 **Not on npm yet**
 
 ```
