@@ -1,5 +1,5 @@
 /**
- * Actions descriptor
+ * Oauth actions descriptor
  * ---------------------
  *
  * @author  Mikwiss (@mikwiss)
@@ -10,9 +10,6 @@ export const AUTHENTICATED = '@@connect/AUTHENTICATED';
 export const UNAUTHENTICATED = '@@connect/UNAUTHENTICATED';
 export const AUTHENTICATION_ERROR = '@@connect/AUTHENTICATION_ERROR';
 
-export const IS_FETCHING = '@@connect/IS_FETCHING';
-export const END_IS_FETCHING = '@@connect/END_IS_FETCHING';
-export const PARTIAL_END_IS_FETCHING = '@@connect/PARTIAL_END_IS_FETCHING';
 
 // TODO : make params oauth request as midleware parameter
 // TODO : Make symbol as default parameter

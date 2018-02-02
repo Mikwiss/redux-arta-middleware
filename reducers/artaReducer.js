@@ -7,10 +7,12 @@
  *
  */
 
-import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR, IS_FETCHING, PARTIAL_END_IS_FETCHING, END_IS_FETCHING } from './../actions/auth';
+import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR } from './../actions/authActions';
+import { IS_FETCHING, PARTIAL_END_IS_FETCHING, END_IS_FETCHING } from './../actions/fetchActions';
+
 import { hasAuthToken } from './../core/token';
 
-function oauthReducer(state={ authenticated: hasAuthToken(), isFetching: false, count: 0 }, action) {
+function artaReducer(state={ authenticated: hasAuthToken(), isFetching: false, count: 0 }, action) {
   switch(action.type) {
     case AUTHENTICATED:
       return { ...state, authenticated: true };
@@ -29,4 +31,4 @@ function oauthReducer(state={ authenticated: hasAuthToken(), isFetching: false, 
   }
 }
 
-export { oauthReducer };
+export { artaReducer };
