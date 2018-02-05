@@ -1,29 +1,22 @@
 # redux-arta-middleware
 
-Redux middleware for an API REST server.
-ARTA is for Api Rest Thunk Axios, yeah this is not fun.
+Redux middleware for an API REST server. *ARTA* is for **Api Rest Thunk Axios**.
 
-## Motivation
+## "Késako"
+
+I wanted to provide to my first *react-redux* app, a service in order to refresh my token in each request. So i tried to make a middleware. Guess what ? Middleware are awesome. I put on it all async call (thanks to [axios](https://github.com/axios/axios)). So, when i want to send a request to the API server, i just need to dispatch a specific action and the middleware automatically refresh the token if needed, and dispatch result to the app's store.
 
 ## Getting Started
-
-In order to use ARTA middleware
 
 ### Prerequisites
 
 It's obvious, but this package use [redux](https://redux.js.org/).
 
-redux-arta-middleware use [redux-thunk](https://github.com/gaearon/redux-thunk) in order to be able to use function instead of action.
+*redux-arta-middleware* use also [redux-thunk](https://github.com/gaearon/redux-thunk) in order to be able to use function instead of action.
 
 ### Installation
 
-**Not on npm yet**
-
-```
-npm install redux-arta-middleware
-```
-
-And if you're cool :
+For now, clone the repo inside your project as a classic module.
 
 ```
 yarn add redux-arta-middleware
