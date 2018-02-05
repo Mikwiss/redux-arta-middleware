@@ -18,16 +18,12 @@ It's obvious, but this package use [redux](https://redux.js.org/).
 
 For now, clone the repo inside your project as a classic module.
 
-```
-yarn add redux-arta-middleware
-```
+### Create middleware
 
-### How to use it ?
-
-First, import *arta* reducer and combine with yrous others reducers.
+First, import *arta* reducer and combine with yours others reducers.
 
 ```javascript
-import { artaReducer } from 'redux-arta-middleware';
+import { artaReducer } from './redux-arta-middleware';
 import { combineReducers } from 'redux';
 
 const rootReducer  = combineReducers({
@@ -40,7 +36,7 @@ Next, we have to create *arta* middleware to catch server request in order to se
 
 ```javascript
 import { createStore, applyMiddleware } from 'redux';
-import { createArtaMiddleware } from 'redux-arta-middleware';
+import { createArtaMiddleware } from './redux-arta-middleware';
 
 const artaMiddleware = createArtaMiddleware({
   baseURL: 'http://127.0.0.1:3004',
@@ -63,7 +59,7 @@ ReactDOM.render(
   document.getElementById('root'));
 ```
 
-*Arta* middleware default option :
+For now, *Arta* middleware default options are :
 
 ```javascript
 export default {
