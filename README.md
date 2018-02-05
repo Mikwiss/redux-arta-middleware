@@ -76,7 +76,6 @@ export default {
 ```
 
 
-## Versioning
 ### Get, refresh and delete token
 
 *ARTA* provide four [Symbol](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Symbol) :
