@@ -1,6 +1,6 @@
 # redux-arta-middleware
 
-Redux middleware for an API REST server. *ARTA* is for **Api Rest Thunk Axios**.
+Redux middleware for an API REST server. *ARTA* is for **Api ResT Axios**.
 
 ## "Késako"
 
@@ -12,7 +12,7 @@ I wanted to provide to my first *react-redux* app, a service in order to refresh
 
 It's obvious, but this package use [redux](https://redux.js.org/).
 
-*redux-arta-middleware* use also [redux-thunk](https://github.com/gaearon/redux-thunk) in order to be able to use function instead of action.
+Deprecated : *redux-arta-middleware* use also [redux-thunk](https://github.com/gaearon/redux-thunk) in order to be able to use function instead of action.
 
 ### Installation
 
