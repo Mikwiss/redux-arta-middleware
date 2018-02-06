@@ -171,6 +171,40 @@ dispatch(getPost(1));
 
 ##### Success action
 
+Now, in order to have a response, let declare a success action into the action creator !
+
+```javascript
+// Declare action
+export const SUCCESS_GET_POST = "SUCCESS_GET_POST";
+
+// Get post by id
+function getPost(postId) {
+  return {
+      [REQUEST_API]: {
+        method: 'GET',
+        url: '/api/posts/' + postId,
+        successType: SUCCESS_GET_POST
+      }
+    }
+}
+
+dispatch(getPost(1));
+```
+
+And the associated reducer :
+
+```javascript
+import { SUCCESS_GET_POST } from './actions';
+
+function postReducer(state={ post: undefined }, action) {
+  switch(action.type) {
+    case SUCCESS_GET_POST:
+      return { ...state, post: action.payload };
+    default:
+      return { ...state };
+  }
+}
+```
 
 ##### Start and error action
 
