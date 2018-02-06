@@ -153,6 +153,21 @@ No request needed for this action. The middleware remove token from the local st
 
 ##### Symbol REQUEST_API
 
+In order to send a request to the API, you have to declare a action creator with the generic Symbol *REQUEST_API* :
+
+```javascript
+// Get post by id
+function getPost(postId) {
+  return {
+      [REQUEST_API]: {
+        method: 'GET',
+        url: '/api/posts/' + postId
+      }
+    }
+}
+
+dispatch(getPost(1));
+```
 
 ##### Success action
 
