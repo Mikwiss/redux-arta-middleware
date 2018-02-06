@@ -208,6 +208,29 @@ function postReducer(state={ post: undefined }, action) {
 
 ##### Start and error action
 
+You can also declare a start action and an error action. The first one is dispatched the spcified action before the request API (usefull for set an *isFetching*), and the second one is dispatched when any errors occurred.
+
+```javascript
+// Declare actions
+export const SUCCESS_GET_POST = "SUCCESS_GET_POST";
+export const START_GET_POST = "START_GET_POST";
+export const ERROR_GET_POST = "ERROR_GET_POST";
+
+// Get post by id
+function getPost(postId) {
+  return {
+      [REQUEST_API]: {
+        method: 'GET',
+        url: '/api/posts/' + postId,
+        successType: SUCCESS_GET_POST,
+        sendingType: START_GET_POST,
+        errorType: ERROR_GET_POST
+      }
+    }
+}
+
+dispatch(getPost(1));
+```
 
 ##### Chained action (beta)
 
