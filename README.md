@@ -134,7 +134,7 @@ If the request is successfull, the middleware dispacth an *AUTHENTICATED* action
 
 ##### DISCONNECT_API
 
-You can refresh your token whenever you want thanks to the *REFRESH_TOKEN_API* symbol :
+You can disconnect your app whenever you want thanks to the *DISCONNECT_API* symbol :
 
 ```javascript
 function disconnectMyApp() {
