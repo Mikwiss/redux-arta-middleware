@@ -18,7 +18,9 @@ Deprecated : *redux-arta-middleware* use also [redux-thunk](https://github.com/g
 
 For now, clone the repo inside your project as a classic module.
 
-### Create middleware
+## Arta middleware
+
+### Create middleware and reducer
 
 First, import *arta* reducer and combine with yours others reducers.
 
@@ -86,7 +88,7 @@ import { REQUEST_API, CONNECT_API, REFRESH_TOKEN_API, DISCONNECT_API }          
 
 *ARTA* middleware catch this symbol action and let classic action through away.
 
-#### CONNECT_API
+##### CONNECT_API
 
 To connect your app to the API, create a function :
 
@@ -113,7 +115,7 @@ dispatch(connectMyAppToTheApi(email, password)),
 
 If the request is successfull, the middleware dispacth an *AUTHENTICATED* action and save the token into the local storage. Otherwise an *AUTHENTICATION_ERROR*.
 
-#### REFRESH_TOKEN_API
+##### REFRESH_TOKEN_API
 
 You can refresh your token whenever you want thanks to the *REFRESH_TOKEN_API* symbol :
 
@@ -130,7 +132,7 @@ dispatch(refreshMyToken()),
 
 If the request is successfull, the middleware dispacth an *AUTHENTICATED* action an save the token into the local storage. Otherwise an *AUTHENTICATION_ERROR*.
 
-#### DISCONNECT_API
+##### DISCONNECT_API
 
 You can refresh your token whenever you want thanks to the *REFRESH_TOKEN_API* symbol :
 
@@ -146,6 +148,21 @@ dispatch(disconnectMyApp()),
 ```
 
 No request needed for this action. The middleware remove token from the local storage and dispacth an *UNAUTHENTICATED* action.
+
+### Request the API
+
+##### Symbol REQUEST_API
+
+
+##### Success action
+
+
+##### Start and error action
+
+
+##### Chained action (beta)
+
+##### Final code
 
 
 ## License
