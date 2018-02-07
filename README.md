@@ -358,6 +358,19 @@ If the middleware catch a few *REQUEST_API* before receive a response, it dispat
 export const PARTIAL_END_IS_FETCHING = '@@arta-middleware/PARTIAL_END_IS_FETCHING';
 ```
 
+### Action dispacthed workflow
+
+According to our final code (see below), the action are dispatched in the following order :
+
+1. **IS_FETCHING** *{ count : 1 }*
+2. START_GET_POST
+3. SUCCESS_GET_POST
+4. **IS_FETCHING** *{ count : 2 }*
+5. START_GET_AUTHOR
+6. **PARTIAL_END_IS_FETCHING** *{ count : 1 }*
+7. SUCCESS_GET_AUTHOR
+8. **END_IS_FETCHING** *{ count : 0 }*
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
