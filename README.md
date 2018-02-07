@@ -371,6 +371,11 @@ According to our final code (see below), the action are dispatched in the follow
 7. SUCCESS_GET_AUTHOR
 8. **END_IS_FETCHING** *{ count : 0 }*
 
+## Versioning
+
+- [x] 0.0.1 - first version on github
+- [ ] Implement tests
+- [ ] Make it more generic
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
