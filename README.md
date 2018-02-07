@@ -77,7 +77,6 @@ export default {
 };
 ```
 
-
 ### Get, refresh and delete token
 
 *ARTA* provide four [Symbol](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Symbol) :
@@ -208,7 +207,7 @@ function postReducer(state={ post: undefined }, action) {
 
 ##### Start and error action
 
-You can also declare a start action and an error action. The first one is dispatched the spcified action before the request API (usefull for set an *isFetching*), and the second one is dispatched when any errors occurred.
+You can also declare a start action and an error action. The first one is dispatched the specified action before the request API (usefull for set an *isFetching*), and the second one is dispatched when any errors occurred.
 
 ```javascript
 // Declare actions
