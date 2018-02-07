@@ -279,6 +279,64 @@ dispatch(getPostWithAuthor(1));
 
 **Note** : You can chained more than two action. But it's not tested feature for now.
 
+##### Final code (beta)
+
+Your final can look like this :
+
+```javascript
+// Declare actions
+export const SUCCESS_GET_POST = "SUCCESS_GET_POST";
+export const START_GET_POST = "START_GET_POST";
+export const ERROR_GET_POST = "ERROR_GET_POST";
+export const SUCCESS_GET_AUTHOR = "SUCCESS_GET_AUTHOR";
+export const START_GET_AUTHOR = "START_GET_AUTHOR";
+export const ERROR_GET_AUTHOR = "ERROR_GET_AUTHOR";
+
+
+// Get post by id
+function getPost(postId, nextAction) {
+  return {
+      [REQUEST_API]: {
+        method: 'GET',
+        url: '/api/posts/' + postId,
+        successType: SUCCESS_GET_POST,
+        sendingType: START_GET_POST,
+        errorType: ERROR_GET_POST,
+        nextAction: nextAction
+      }
+    }
+}
+
+// Get author by id
+function getAuthor(authorId) {
+  return {
+      [REQUEST_API]: {
+        method: 'GET',
+        url: '/api/users/' + authorId,
+        successType: SUCCESS_GET_AUTHOR,
+        sendingType: START_GET_AUTHOR,
+        errorType: ERROR_GET_AUTHOR,
+        nextAction: nextAction
+      }
+    }
+}
+
+function getPostWithAuthor(postId) {
+  return getPost(postId, (payload) => {
+    // Return error action if is not possible to execute next action
+    if (payload === undefined) {
+      return {
+        type: ERROR_GET_POST,
+        error: "No post id"
+      }
+    }
+    // Return the next action
+    return getAuthor(payload.authorId);
+  });
+}
+
+dispatch(getPostWithAuthor(1));
+```
 
 
 ## License
