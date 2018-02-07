@@ -338,6 +338,26 @@ function getPostWithAuthor(postId) {
 dispatch(getPostWithAuthor(1));
 ```
 
+### API fetching
+
+For each *REQUEST_API* made, a specific action is dispatch by the *arta middleware* : *IS_FETCHING*.
+
+```javascript
+export const IS_FETCHING = '@@arta-middleware/IS_FETCHING';
+```
+
+At the end of the request, a *END_IS_FETCHING* action is dispatched.
+
+```javascript
+export const END_IS_FETCHING = '@@arta-middleware/END_IS_FETCHING';
+```
+
+If the middleware catch a few *REQUEST_API* before receive a response, it dispatch before *END_IS_FETCHING* a partial *is fetching* action : *PARTIAL_END_IS_FETCHING* for each request and a final *END_IS_FETCHING* when all request have a server response (or error).
+
+```javascript
+export const PARTIAL_END_IS_FETCHING = '@@arta-middleware/PARTIAL_END_IS_FETCHING';
+```
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
