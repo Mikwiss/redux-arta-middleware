@@ -234,7 +234,51 @@ dispatch(getPost(1));
 
 ##### Chained action (beta)
 
-##### Final code
+It is possible to dispatch an action after a first one.
+
+```javascript
+// Get post by id
+function getPost(postId, nextAction) {
+  return {
+      [REQUEST_API]: {
+        method: 'GET',
+        url: '/api/posts/' + postId,
+        successType: SUCCESS_GET_POST,
+        nextAction: nextAction
+      }
+    }
+}
+
+// Get author by id
+function getAuthor(authorId) {
+  return {
+      [REQUEST_API]: {
+        method: 'GET',
+        url: '/api/users/' + authorId,
+        successType: SUCCESS_GET_AUTHOR
+      }
+    }
+}
+
+function getPostWithAuthor(postId) {
+  return getPost(postId, (payload) => {
+    // Return error action if is not possible to execute next action
+    if (payload === undefined) {
+      return {
+        type: ERROR_GET_POST,
+        error: "No post id"
+      }
+    }
+    // Return the next action
+    return getAuthor(payload.authorId);
+  });
+}
+
+dispatch(getPostWithAuthor(1));
+```
+
+**Note** : You can chained more than two action. But it's not tested feature for now.
+
 
 
 ## License
