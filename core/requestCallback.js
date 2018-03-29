@@ -1,18 +1,7 @@
 /**
- * Axios Request Wrapper
+ * Callback response
  * ---------------------
- *
- * @author  Sheharyar Naseer (@sheharyarn)
- * @license MIT
- *
  */
-
-import axios from 'axios';
-
-/**
- * Create an Axios Client with defaults
- */
-const client = axios.create();
 
 const onSuccess = function(response) {
   console.debug('Request Successful!', response);
@@ -39,13 +28,4 @@ const onError = function(error) {
   return Promise.reject(error.response || error.message);
 }
 
-/**
- * Request Wrapper with default success/error actions
- */
-const Request = function(options) {
-  return client(options)
-            .then(onSuccess)
-            .catch(onError);
-}
-
-export { Request, onSuccess, onError };
+export { onSuccess, onError };
