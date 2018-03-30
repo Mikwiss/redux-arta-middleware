@@ -9,7 +9,7 @@
 
 import axios from 'axios';
 
-import { onSuccess, onError } from './../core/request';
+import { onSuccess, onError } from './../core/requestCallback';
 
 import { hasAuthToken,
   getAuthToken,
@@ -47,6 +47,7 @@ function createArtaMiddleware(options = {}) {
     shouldRefreshTokenOnEachRequest
   } = requestOptions;
 
+  // Instance for OAUTH process
   const oauthAxiosInstance = axios.create({
     baseURL: baseURL,
     headers: headers,
@@ -57,6 +58,13 @@ function createArtaMiddleware(options = {}) {
     }
   });
 
+  const oauthAxiosRequest = function(options) {
+    return oauthAxiosInstance(options)
+              .then(onSuccess)
+              .catch(onError);
+  }
+
+  // Instance for request process
   const instance = axios.create({
     baseURL: baseURL,
     headers: headers
@@ -68,12 +76,7 @@ function createArtaMiddleware(options = {}) {
               .catch(onError);
   }
 
-  const oauthAxiosRequest = function(options) {
-    return oauthAxiosInstance(options)
-              .then(onSuccess)
-              .catch(onError);
-  }
-
+  // Create an interceptors if we shouldRefreshToken
   if (shouldRefreshTokenOnEachRequest) {
     instance.interceptors.request.use(
       (config) => {
@@ -214,7 +217,7 @@ function createArtaMiddleware(options = {}) {
   }
 
   // The client request
-  const doRequestServerAPI = (url, method, startAction, nextAction, successAction, errorAction) => {
+  const doRequestServerAPI = (baseURL, url, method, startAction, nextAction, successAction, errorAction, data, otherArguments) => {
     return async (dispatch) => {
 
       dispatch(startIsFetchingAction());
@@ -223,10 +226,35 @@ function createArtaMiddleware(options = {}) {
         dispatch({ type: startAction });
       }
 
-      await requestServerAPI({
+      // Base request
+      var requestParameters = {
         method: method,
         url: url
-      }).then(function (response) {
+      };
+
+      // If baseURL is not null,
+      if (baseURL !== undefined) {
+        var newBaseURLParameters = {
+          baseURL: baseURL
+        }
+        requestParameters = Object.assign({}, requestParameters, newBaseURLParameters);
+      }
+
+      // If data are set
+      if (data !== undefined) {
+        var newData = {
+          data: data
+        }
+        requestParameters = Object.assign({}, requestParameters, newData);
+      }
+
+      // If otherarguments are set
+      if (otherArguments !== undefined) {
+        requestParameters = Object.assign({}, requestParameters, otherArguments);
+      }
+
+      // Do request
+      await requestServerAPI(requestParameters).then(function (response) {
           if (successAction !== undefined) {
             dispatch({ type: successAction, payload: response });
           }
@@ -253,15 +281,18 @@ function createArtaMiddleware(options = {}) {
     // Simple request
     if (action[REQUEST_API]) {
       const {
+        baseURL,
         method,
         url,
         sendingType,
         nextAction,
         successType,
-        errorType
+        errorType,
+        data,
+        otherArguments
       } = action[REQUEST_API];
 
-      dispatch(doRequestServerAPI(url, method, sendingType, nextAction, successType, errorType));
+      dispatch(doRequestServerAPI(baseURL, url, method, sendingType, nextAction, successType, errorType, data, otherArguments));
     } else if (action[CONNECT_API]) {
       const {
         user,
